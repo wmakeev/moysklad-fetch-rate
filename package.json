@@ -1,0 +1,22 @@
+{
+  "name": "moysklad-fetch-rate",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "env:example": "npx sync-dotenv",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vitaliy V. Makeev",
+  "license": "ISC",
+  "dependencies": {
+    "@wmakeev/highland-tools": "^1.4.0",
+    "dotenv": "^11.0.0",
+    "highland": "^2.13.5",
+    "moysklad-instance": "^3.0.3"
+  },
+  "devDependencies": {
+    "@types/highland": "^2.12.14"
+  }
+}
