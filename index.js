@@ -12,7 +12,13 @@ function getAuths() {
     const auth = process.env[`MS_INSTANCE_AUTH_${index}`]
 
     if (auth) {
-      auths.push(auth)
+      const [login, password] = auth.split(';')
+
+      if (!login || !password) {
+        throw new Error(`Авторизиция ${index} указана некорретно`)
+      }
+
+      auths.push({ login, password })
       index++
     } else {
       return auths
@@ -64,11 +70,9 @@ async function testEntityCollectionFetchRate() {
     )
   }
 
-  const instances = auths.slice(0, accounts).map((auth, index) => {
-    const [login, password] = auth.split(';')
-
-    return getInstance(`instance${index + 1}`, { login, password })
-  })
+  const instances = auths
+    .slice(0, accounts)
+    .map((auth, index) => getInstance(`instance${index + 1}`, auth))
 
   const POOL_LEN = instances.length
   const LIMIT = 100
