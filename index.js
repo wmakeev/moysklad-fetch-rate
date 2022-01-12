@@ -117,5 +117,5 @@ async function testEntityCollectionFetchRate() {
 }
 
 testEntityCollectionFetchRate().catch(err => {
-  console.log(err.message)
+  console.error(err.message)
 })
